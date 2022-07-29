@@ -17,7 +17,7 @@
     "main main main"
     "footer footer footer";
   background-image: url(./img/gitlogoforme.jpeg);
-  color: white;
+  color: rgb(255, 255, 255);
 }
 .popup {
   display: none;

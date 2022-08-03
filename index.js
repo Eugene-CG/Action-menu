@@ -1,4 +1,4 @@
-const container = document.querySelector("div.delegate-events-container");
+const container = document.querySelector(".wrapper");
 const popup = document.querySelector(".popup");
 const texts = [
   {
@@ -16,23 +16,40 @@ const texts = [
   {
     class: "four",
     html: `<h2>Four Information</h2><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum voluptas beatae  eius at, laudantium, veritatis eos totam hic molestiae saepe ad quos deserunt  itaque. Corporis aperiam consequuntur fuga eius earum?</p><p>  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, accusantium  delectus. Reiciendis libero ea vero nulla dolores voluptate sed pariatur  laboriosam molestiae, nostrum at fugiat ducimus vitae doloremque quaerat ab?</p><p>  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque voluptates vel  nihil nostrum ullam beatae consequuntur nulla exercitationem reiciendis?  Deserunt neque nam cum totam quam debitis tenetur delectus fuga quidem.</p><p>  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut vero, tempora  quia deserunt ullam ea voluptatem ad ipsam quas quos voluptatibus  exercitationem magnam est pariatur soluta tempore placeat repudiandae omnis?</p>`,
-  },
+  }, //генерувати елементи з масиву
 ];
 
-const delegateEvents = ({ target }) => {
+const delegateEvents = (event) => {
+  const { target } = event;
   const popupButton = target.closest(".popup-btn-input");
   const menuList = target.closest(".menu__list");
   const popupList = target.closest(".popup__list");
   const popup = target.closest(".popup");
+  const logo = target.closest(".logo");
 
-  if (popupButton) showPopup();
-  if (menuList || popupList) handleList(target);
+  if (logo) showMainPage(event);
+  if (popupButton) togglePopup();
+  if (menuList) handleList(target);
 };
 
-const showPopup = () => (popup.style.display = "block");
-const closePopup = (target) => {
-  if (target.closest(".popup__list-item")) popup.style.display = "none";
+const showMainPage = (event) => {
+  document.querySelector(
+    ".main__content"
+  ).innerHTML = `<h1> Main Information </h1><p> Lorem ipsum dolor sit 
+    amet consectetur, adipisicing elit. Qui perspiciatis  
+    assumenda atque fugit facilis illum nobis totam fugiat aliquid, ratione 
+     sapiente ullam quo, repudiandae ipsum ducimus deleniti quos corporis sunt.</p>
+     <p>  Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus ipsa amet  
+     corrupti nisi, corporis distinctio velit tenetur omnis iusto adipisci fugiat  soluta 
+     inventore qui vel est nobis consectetur reprehenderit consequuntur!</p><p>  Lorem ipsum 
+     dolor sit amet consectetur adipisicing elit. Corrupti quam  mollitia quisquam rerum illum
+      enim eum, perspiciatis obcaecati, maiores iste  dolorem! Dignissimos, cumque rerum minima
+       quas impedit molestiae ea quo?</p><p>  Lorem ipsum dolor sit amet consectetur adipisicing 
+       elit. Culpa, itaque quasi  inventore consequuntur animi possimus, sint temporibus assumenda,
+        molestiae  suscipit aut perferendis minus! Dolores atque architecto praesentium debitis  ullam libero.</p>`;
 };
+
+const togglePopup = () => popup.classList.toggle("showPopup");
 
 const handleList = (target) => {
   if (
@@ -43,10 +60,41 @@ const handleList = (target) => {
     const findTextByClassName = texts.find((text) =>
       className.includes(text.class)
     ).html;
-
     document.querySelector(".main__content").innerHTML = findTextByClassName;
   }
-  closePopup(target);
+  togglePopup();
 };
 
 container.addEventListener("click", delegateEvents);
+//
+//
+//
+//
+//
+const delegateEvents = (event) => {
+  const { target } = event;
+  const popupButton = target.closest(".popup-btn-input");
+  const menuList = target.closest(".menu__list");
+  const logo = target.closest(".logo");
+
+  if (logo) showMainPage(event);
+  if (popupButton) togglePopup();
+  if (menuList) handleList(target);
+};
+const showMainPage = (event) => {
+  event.preventDefault();
+  document.querySelector(
+    ".main__content"
+  ).innerHTML = `<h1> Main Information </h1><p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui perspiciatis  assumenda atque fugit facilis illum nobis totam fugiat aliquid, ratione sapiente ullam quo, repudiandae ipsum ducimus deleniti quos corporis sunt.</p><p>  Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus ipsa amet  corrupti nisi, corporis distinctio velit tenetur omnis iusto adipisci fugiat  soluta inventore qui vel est nobis consectetur reprehenderit consequuntur!</p><p>  Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti quam  mollitia quisquam rerum illumenim eum, perspiciatis obcaecati, maiores iste  dolorem! Dignissimos, cumque rerum minimaquas impedit molestiae ea quo?</p><p>  Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, itaque quasi  inventore consequuntur animi possimus, sint temporibus assumenda,molestiae  suscipit aut perferendis minus! Dolores atque architecto praesentium debitis  ullam libero.</p>`;
+};
+const togglePopup = () => popup.classList.toggle("checkPopupMenu");
+const handleList = (target) => {
+  if (target.closest(".menu__list-item")) {
+    const className = target.className;
+    const findTextByClassName = texts.find((text) =>
+      className.includes(text.class)
+    ).html;
+
+    document.querySelector(".main__content").innerHTML = findTextByClassName;
+  }
+};

@@ -127,6 +127,7 @@ const wrapper = document.querySelector(".wrapper");
 const mainContent = document.querySelector(".main__content");
 const menuList = document.querySelector(".menu__list");
 const defaultContent = mainContent.innerHTML;
+
 const delegateEvents = (event) => {
   const { target } = event;
   if (target.closest(".menu__list")) handleList(target);
@@ -161,8 +162,8 @@ const createParagraph = (target, howMuchTimes) => {
   }
   const paragraph = document.createElement("P");
   typeEffect(paragraph, texts.get(target.innerText).split(""));
-  mainContent.appendChild(paragraph);
   setTimeout(() => {
+    mainContent.appendChild(paragraph);
     return createParagraph(target, howMuchTimes - 1);
   }, 800);
 };

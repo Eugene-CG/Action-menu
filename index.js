@@ -75,7 +75,7 @@
 //     deck.appendChild(liTag);
 //   }
 // }
-
+65;
 const texts = new Map();
 texts
   .set(
@@ -170,7 +170,6 @@ const typeEffect = (paragraph, textArray) => {
   let i = 0;
   function recursive() {
     if (i >= textArray.length) return;
-    console.log(textArray);
     paragraph.innerHTML += textArray[i];
     i++;
     setTimeout(recursive, 40);

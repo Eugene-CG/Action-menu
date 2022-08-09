@@ -21,10 +21,10 @@
     #4369af 25%,
     #331fa5 38%,
     #00369b 50%,
-    #4bd68c 62%,
-    #5ab487 75%,
-    #17c373 87%,
-    #24b600 100%
+    #57fff1 62%,
+    #4ceaff 75%,
+    #0098ac 87%,
+    #006b7e 100%
   );
   background-size: 400% 400%;
   animation: animate 7.5s ease-in-out infinite;
@@ -66,6 +66,7 @@ a {
 }
 .main__content > p {
   margin: 2em 0;
+  border-bottom: 3px solid blue;
   font-size: 1.2em;
   transition: 0.2s all ease-in-out;
 }
@@ -110,14 +111,14 @@ a {
     left: 0;
     display: none;
     flex-direction: column;
-    background-color: rgb(70, 253, 140);
+    background-color: rgb(161, 255, 247);
   }
   .menu__list > li {
     width: 100vw;
     height: 10vh;
     margin: 1.5em auto;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.7);
   }
   .hide {
     display: block;

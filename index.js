@@ -81,24 +81,29 @@ texts
   .set(
     "HahahaOne",
     `Lorem One one One one One one One one One One one One one One one One one One One one One one One
-    one One one One One one One one One one One one Oneoneipsum dolor sit amet consectetur adipisicing elit. Ad, qui
-    laboriosam? Est, et ex? Fugit, quidem aliquid cumque porro rerum
+    one One one One One one One one One one One one Oneoneipsum dolor 
+    sit amet consectetur adipisicing elit. 
+    Ad, qui
+    laboriosam? Est, et ex? Fugit, 
+    quidem aliquid cumque porro rerum
     maiores voluptate cupiditate deserunt tenetur distinctio mollitia
     inventore quo! Nostrum.`
   )
   .set(
     "HahahaTwo",
-    `Lorem TWO TWO Two Two Two Two Two Two Two Two Two Two Two Two Two Two
+    `Lorem TWO TWO Two Two Two 
+    Two Two Two Two Two Two Two Two Two Two Two
     ipsum dolor sit amet consectetur adipisicing elit. Ad, qui
-    laboriosam? Est, et ex? Fugit, quidem aliquid cumque porro rerum
+    laboriosam? Est, et ex? Fugit, 
+    quidem aliquid cumque porro rerum
     maiores voluptate cupiditate deserunt tenetur distinctio mollitia
     inventore quo! Nostrum.`
   )
   .set(
     "HahahaThree",
-    `Lorem Three Three Three Three Three Three Three Three Three Three Thr
-    ipsum dolor sit amet consectetur adipisicing elit. Ad, qui
-    laboriosam? Est, et ex? Fugit, quidem aliquid cumque porro rerum
+    `Lorem Three Three Three Three Three Three Three Three Three Three Thr ipsum dolor sit amet consectetur adipisicing elit. Ad, qui
+    laboriosam? Est, et ex? Fugit, quidem aliquid
+     cumque porro rerum
     maiores voluptate cupiditate deserunt tenetur distinctio mollitia
     inventore quo! Nostrum.`
   )
@@ -155,10 +160,21 @@ const createParagraph = (target, howMuchTimes) => {
     throw new TypeError("Cannot read property of undefined");
   }
   const paragraph = document.createElement("P");
-  paragraph.innerText = texts.get(target.innerText);
+  typeEffect(paragraph, texts.get(target.innerText).split(""));
   mainContent.appendChild(paragraph);
-
-  return createParagraph(target, howMuchTimes - 1);
+  setTimeout(() => {
+    return createParagraph(target, howMuchTimes - 1);
+  }, 800);
 };
-
+const typeEffect = (paragraph, textArray) => {
+  let i = 0;
+  function recursive() {
+    if (i >= textArray.length) return;
+    console.log(textArray);
+    paragraph.innerHTML += textArray[i];
+    i++;
+    setTimeout(recursive, 40);
+  }
+  recursive();
+};
 wrapper.addEventListener("click", delegateEvents);

@@ -1,7 +1,6 @@
 :root {
   --icon-size: 61px;
 }
-
 * {
   margin: 0;
   padding: 0;
@@ -67,9 +66,35 @@ a {
 }
 .main__content > p {
   margin: 2em 0;
+  font-size: 1.2em;
+  transition: 0.2s all ease-in-out;
 }
 .footer {
   grid-area: footer;
+}
+.menu__list > li > a,
+.logo-link {
+  font-size: 1.5em;
+  font-weight: 700;
+}
+.menu__list > li:hover,
+.logo-link:hover {
+  text-decoration: underline;
+}
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #00c3ff #ffffff;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #00e1ff;
+  border-radius: 10px;
+  border: 3px solid #ffffff;
 }
 @media (max-width: 954px) {
   .menu__popup-icon {
@@ -85,13 +110,14 @@ a {
     left: 0;
     display: none;
     flex-direction: column;
+    background-color: rgb(70, 253, 140);
   }
   .menu__list > li {
     width: 100vw;
     height: 10vh;
     margin: 1.5em auto;
     text-align: center;
-    background-color: black;
+    background-color: rgba(255, 255, 255, 0.3);
   }
   .hide {
     display: block;
@@ -107,27 +133,4 @@ a {
   100% {
     background-position: 0 25%;
   }
-}
-.menu__list > li > a,
-.logo-link {
-  font-size: 1.5em;
-  font-weight: 700;
-}
-/* ===== Scrollbar CSS ===== */
-/* Firefox */
-* {
-  scrollbar-width: auto;
-  scrollbar-color: #00c3ff #ffffff;
-}
-/* Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
-  width: 10px;
-}
-*::-webkit-scrollbar-track {
-  background: #ffffff;
-}
-*::-webkit-scrollbar-thumb {
-  background-color: #00e1ff;
-  border-radius: 10px;
-  border: 3px solid #ffffff;
 }

@@ -91,7 +91,7 @@ texts
   )
   .set(
     "HahahaTwo",
-    `Lorem TWO TWO Two Two Two 
+    `Lorem Two Two Two 
     Two Two Two Two Two Two Two Two Two Two Two
     ipsum dolor sit amet consectetur adipisicing elit. Ad, qui
     laboriosam? Est, et ex? Fugit, 
@@ -172,7 +172,7 @@ const typeEffect = (paragraph, textArray) => {
     if (i >= textArray.length) return;
     paragraph.innerHTML += textArray[i];
     i++;
-    setTimeout(recursive, 40);
+    setTimeout(recursive, 20);
   }
   recursive();
 };
